@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { LogoutIcon } from 'tdesign-icons-vue-next'
-
 </script>
 
 <template>
@@ -9,7 +8,7 @@ import { LogoutIcon } from 'tdesign-icons-vue-next'
       <h1>PulsarManager</h1>
     </div>
     <div class="pmf-header__content">
-      <t-select :filterable="true" :clearable="true" style="width: 300px" :showArrow="true" >
+      <t-select :filterable="true" :clearable="true" style="width: 300px" :showArrow="true">
         <t-option key="apple" label="Apple" value="apple" />
       </t-select>
       <t-space class="pmf-header__actions">
@@ -32,7 +31,7 @@ import { LogoutIcon } from 'tdesign-icons-vue-next'
 
   height: 100%;
   background-color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
   .pmf-header__title {
     width: 232px;
@@ -46,7 +45,7 @@ import { LogoutIcon } from 'tdesign-icons-vue-next'
     }
   }
 
-  .pmf-header__content{
+  .pmf-header__content {
     width: calc(100% - 232px);
     display: flex;
     justify-content: space-between;

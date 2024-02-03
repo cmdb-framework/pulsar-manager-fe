@@ -1,12 +1,12 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useBaseStore = defineStore('base', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+  const pulsarInstance = {
+    instanceId: ref(''),
+    setInstanceId: (id: string) => {
+      pulsarInstance.instanceId.value = id
+    }
   }
-
-  return { count, doubleCount, increment }
+  return { pulsarInstance }
 })
