@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { LogoutIcon } from 'tdesign-icons-vue-next'
+import { useBaseStoreWithOut } from '@/stores/module/base'
+
+const pulsarInstance = useBaseStoreWithOut().pulsarInstance
 </script>
 
 <template>
@@ -8,8 +11,8 @@ import { LogoutIcon } from 'tdesign-icons-vue-next'
       <h1>PulsarManager</h1>
     </div>
     <div class="pmf-header__content">
-      <t-select :filterable="true" :clearable="true" style="width: 300px" :showArrow="true">
-        <t-option key="apple" label="Apple" value="apple" />
+      <t-select v-model="pulsarInstance.instanceId" :filterable="true" :clearable="true" style="width: 300px" :showArrow="true">
+        <t-option label="Apple" value="apple" />
       </t-select>
       <t-space class="pmf-header__actions">
         <t-button variant="outline" theme="danger">

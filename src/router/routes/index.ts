@@ -6,7 +6,7 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Home',
     component: () => import('@/layout/LayoutView.vue'),
-    children: [...instance_routes]
+    children: instance_routes
   }
 ]
 
