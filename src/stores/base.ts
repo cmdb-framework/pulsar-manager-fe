@@ -3,10 +3,17 @@ import { defineStore } from 'pinia'
 
 export const useBaseStore = defineStore('base', () => {
   const pulsarInstance = {
-    instanceId: ref(''),
-    setInstanceId: (id: string) => {
+    instanceId: ref<string | number>(''),
+    setInstanceId: (id: string): void => {
       pulsarInstance.instanceId.value = id
     }
   }
-  return { pulsarInstance }
+  const menuStatus = {
+    isCollapsed: ref<boolean>(false),
+    currentMenu: ref<string | number>(''),
+    toggleCollapsed: (): void => {
+      menuStatus.isCollapsed.value = !menuStatus.isCollapsed.value
+    }
+  }
+  return { pulsarInstance, menuStatus }
 })

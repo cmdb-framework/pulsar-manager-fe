@@ -10,16 +10,16 @@ import PMFAside from '@/layout/components/PMFAside.vue'
   <t-layout class="full">
     <t-header><PMFHeader /></t-header>
     <t-layout>
-      <t-aside><PMFAside /></t-aside>
+      <t-aside width="auto"><PMFAside /></t-aside>
       <t-layout>
         <t-content class="tContentBase">
           <RouterView>
             <NoSelected />
           </RouterView>
         </t-content>
-        <t-footer style="padding: 0;height: 24px;background-color: white;">
-          <PMFFooter />
-        </t-footer>
+<!--        <t-footer style="padding: 0; height: 24px; background-color: white">-->
+<!--          <PMFFooter />-->
+<!--        </t-footer>-->
       </t-layout>
     </t-layout>
   </t-layout>

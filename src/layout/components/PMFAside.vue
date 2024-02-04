@@ -1,67 +1,61 @@
 <script setup lang="ts">
-
+import { ref } from 'vue'
+import { useBaseStore } from '@/stores/base'
+const menuStore = useBaseStore().menuStatus
 </script>
 
 <template>
-  <t-menu theme="light" default-value="dashboard" style="margin-right: 40px" height="550px">
-    <t-menu-item value="dashboard">
-      <template #icon>
-        <t-icon name="dashboard" />
-      </template>
-      仪表盘
-    </t-menu-item>
-    <t-menu-item value="resource">
-      <template #icon>
-        <t-icon name="server" />
-      </template>
-      资源列表
-    </t-menu-item>
-    <t-menu-item value="root">
-      <template #icon>
-        <t-icon name="root-list" />
-      </template>
-      根目录
-    </t-menu-item>
-    <t-menu-item value="control-platform">
-      <template #icon>
-        <t-icon name="control-platform" />
-      </template>
-      调度平台
-    </t-menu-item>
-    <t-menu-item value="precise-monitor">
-      <template #icon>
-        <t-icon name="precise-monitor" />
-      </template>
-      精准监控
-    </t-menu-item>
-    <t-menu-item value="mail">
+  <t-menu theme="light" default-value="3-2" :expand-mutex="true" height="550px" :collapsed="menuStore.isCollapsed">
+    <t-submenu value="3">
       <template #icon>
         <t-icon name="mail" />
       </template>
-      消息区
-    </t-menu-item>
+      <template #title>
+        <span>消息区</span>
+      </template>
+      <t-submenu value="3-1" title="二级菜单">
+        <t-menu-item value="3-1-1"> 三级菜单内容 </t-menu-item>
+        <t-menu-item value="3-1-2"> 三级菜单内容 </t-menu-item>
+        <t-menu-item value="3-1-3"> 三级菜单内容 </t-menu-item>
+      </t-submenu>
+      <t-submenu value="3-5" title="二级菜单">
+        <t-menu-item value="3-5-1"> 三级菜单内容 </t-menu-item>
+        <t-menu-item value="3-5-2"> 三级菜单内容 </t-menu-item>
+        <t-menu-item value="3-5-3"> 三级菜单内容 </t-menu-item>
+      </t-submenu>
+      <t-menu-item value="3-2"> 二级菜单内容 </t-menu-item>
+      <t-menu-item value="3-3"> 二级菜单内容 </t-menu-item>
+      <t-menu-item value="3-4"> 二级菜单内容 </t-menu-item>
+    </t-submenu>
     <t-menu-item value="user-circle">
       <template #icon>
         <t-icon name="user-circle" />
       </template>
       个人中心
     </t-menu-item>
-    <t-menu-item value="play-circle">
+    <t-submenu value="4">
       <template #icon>
         <t-icon name="play-circle" />
       </template>
-      视频区
-    </t-menu-item>
+      <template #title>
+        <span>视频区</span>
+      </template>
+      <t-menu-item value="4-1"> 二级菜单内容 </t-menu-item>
+      <t-menu-item value="4-2"> 二级菜单内容 </t-menu-item>
+      <t-menu-item value="4-3"> 二级菜单内容 </t-menu-item>
+    </t-submenu>
     <t-menu-item value="edit1">
       <template #icon>
         <t-icon name="edit-1" />
       </template>
       资源编辑
     </t-menu-item>
+    <template #operations>
+      <t-button variant="text" shape="square" @click="menuStore.toggleCollapsed()">
+        <template #icon><t-icon name="view-list" /></template>
+      </t-button>
+    </template>
   </t-menu>
-
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
