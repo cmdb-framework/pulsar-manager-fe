@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <h1>Comsumer</h1>
+    <h1>Consumer</h1>
   </div>
 </template>
 

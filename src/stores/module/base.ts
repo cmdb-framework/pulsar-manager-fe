@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
 import { store } from '@/stores'
+import { getInstanceList } from '@/api/sys'
 
 interface BaseState {
   pulsarInstance: {
     instanceId: string | number | null
+    instanceList: any[]
   }
   menuStatus: {
     isCollapsed: boolean
@@ -15,7 +17,8 @@ const useBaseStore = defineStore({
   id: 'base',
   state: (): BaseState => ({
     pulsarInstance: {
-      instanceId: null
+      instanceId: null,
+      instanceList: []
     },
     menuStatus: {
       isCollapsed: false,
@@ -33,6 +36,10 @@ const useBaseStore = defineStore({
   actions: {
     toggleCollapsed(): void {
       this.menuStatus.isCollapsed = !this.menuStatus.isCollapsed
+    },
+    async loadInstanceList(): Promise<any> {
+      const result = await getInstanceList()
+      this.pulsarInstance.instanceList = result.data
     }
   }
 })

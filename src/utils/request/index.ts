@@ -4,7 +4,7 @@ import requestInterceptors from '@/utils/request/requestInterceptors'
 import responseInterceptors from '@/utils/request/responseInterceptors'
 
 const request: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_API as string,
+  baseURL: import.meta.env.VITE_APP_PMB_API as string,
   timeout: 10000
 })
 

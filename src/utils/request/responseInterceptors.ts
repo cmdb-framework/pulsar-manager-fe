@@ -1,18 +1,23 @@
-import type { AxiosInstance } from 'axios'
+import type { AxiosInstance, AxiosResponse } from 'axios'
 import { NotifyPlugin } from 'tdesign-vue-next'
 
+type Result<T> = {
+  code: number
+  message: string
+  result: T
+}
 export default (request: AxiosInstance) => {
   return request.interceptors.response.use(
-    (response) => {
-      const code = response.data.code
+    (response: AxiosResponse<Result<any>>): any => {
+      const code: number = response.data.code
       if (code !== 20000) {
         NotifyPlugin('warning', { title: '程序异常', content: response.data.message }).then((r) => {
           console.log(r)
         })
       }
-      return response
+      return response.data
     },
-    (error) => {
+    (error): void => {
       let message: string
       switch (error.response.status) {
         case 400:
@@ -55,7 +60,6 @@ export default (request: AxiosInstance) => {
       NotifyPlugin('error', { title: '标题', content: message }).then((r) => {
         console.log(r)
       })
-      return Promise.reject(error)
     }
   )
 }

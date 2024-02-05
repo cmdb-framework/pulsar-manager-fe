@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { LogoutIcon } from 'tdesign-icons-vue-next'
 import { useBaseStoreWithOut } from '@/stores/module/base'
-import { onMounted, ref } from 'vue'
-import { getInstanceList } from '@/api/sys'
+import { onMounted } from 'vue'
 
-const instanceList = ref<[]>([])
-const pulsarInstance = useBaseStoreWithOut().pulsarInstance
-onMounted(() => {
-  getInstanceList().then((res) => {
-    instanceList.value = res
-  })
+const baseStore = useBaseStoreWithOut()
+const pulsarInstance = baseStore.pulsarInstance
+
+onMounted((): void => {
+  baseStore.loadInstanceList()
 })
 </script>
 
@@ -26,7 +24,7 @@ onMounted(() => {
         style="width: 300px"
         :showArrow="true"
       >
-        <t-option label="Apple" value="apple" />
+        <t-option v-for="(v,k) in pulsarInstance.instanceList" :key="k" :label="v.instance_name" :value="v.instance_id" />
       </t-select>
       <t-space class="pmf-header__actions">
         <t-button variant="outline" theme="danger">
