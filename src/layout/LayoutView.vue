@@ -15,7 +15,7 @@ const baseStore = useBaseStoreWithOut()
     </t-header>
     <t-layout v-if="baseStore.pulsarInstance.instanceId === null">
       <t-content>
-        <NoSelectedView  />
+        <NoSelectedView />
       </t-content>
     </t-layout>
     <t-layout v-else>

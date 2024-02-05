@@ -6,7 +6,6 @@ import App from '@/App'
 import { setupRouter } from './router'
 import { setupStore } from '@/stores'
 
-
 function bootstrap() {
   const app = createApp(App)
   setupStore(app)
@@ -15,4 +14,3 @@ function bootstrap() {
 }
 
 bootstrap()
-

@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { LogoutIcon } from 'tdesign-icons-vue-next'
 import { useBaseStoreWithOut } from '@/stores/module/base'
+import { onMounted, ref } from 'vue'
+import { getInstanceList } from '@/api/sys'
 
+const instanceList = ref<[]>([])
 const pulsarInstance = useBaseStoreWithOut().pulsarInstance
+onMounted(() => {
+  getInstanceList().then((res) => {
+    instanceList.value = res
+  })
+})
 </script>
 
 <template>
@@ -11,7 +19,13 @@ const pulsarInstance = useBaseStoreWithOut().pulsarInstance
       <h1>PulsarManager</h1>
     </div>
     <div class="pmf-header__content">
-      <t-select v-model="pulsarInstance.instanceId" :filterable="true" :clearable="true" style="width: 300px" :showArrow="true">
+      <t-select
+        v-model="pulsarInstance.instanceId"
+        :filterable="true"
+        :clearable="true"
+        style="width: 300px"
+        :showArrow="true"
+      >
         <t-option label="Apple" value="apple" />
       </t-select>
       <t-space class="pmf-header__actions">

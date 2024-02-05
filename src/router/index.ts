@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import type { App } from 'vue';
+import type { App } from 'vue'
 
 import routes from '@/router/routes'
 import routerGuard from '@/router/guard'
@@ -12,5 +12,5 @@ const router = createRouter({
 const checkedRouter = routerGuard(router)
 
 export function setupRouter(app: App<Element>) {
-  app.use(checkedRouter);
+  app.use(checkedRouter)
 }

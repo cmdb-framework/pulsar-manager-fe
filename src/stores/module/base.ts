@@ -37,7 +37,6 @@ const useBaseStore = defineStore({
   }
 })
 
-
 export function useBaseStoreWithOut() {
   return useBaseStore(store)
 }
