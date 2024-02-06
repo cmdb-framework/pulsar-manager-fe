@@ -6,11 +6,11 @@ export default class Api {
   }
 
   static async post(url: string, data: any): Promise<any> {
-    return await request.get(url, data)
+    return await request.post(url, data)
   }
 
   static async put(url: string, data: any): Promise<any> {
-    return await request.get(url, data)
+    return await request.put(url, data)
   }
 
   static async delete(url: string): Promise<any> {

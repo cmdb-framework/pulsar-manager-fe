@@ -13,30 +13,13 @@ const baseStore = useBaseStoreWithOut()
     <t-header>
       <PMFHeader />
     </t-header>
-    <t-layout v-if="baseStore.pulsarInstance.instanceId === null">
-      <t-content>
-        <NoSelectedView />
-      </t-content>
+    <t-layout>
+      <RouterView />
     </t-layout>
-    <t-layout v-else>
-      <t-aside width="auto">
-        <PMFAside />
-      </t-aside>
-      <t-layout>
-        <t-content class="tContentBase">
-          <RouterView />
-        </t-content>
-        <t-footer style="padding: 0; height: 24px; background-color: white">
-          <PMFFooter />
-        </t-footer>
-      </t-layout>
-    </t-layout>
+    <t-footer style="padding: 0; height: 24px; background-color: white">
+      <PMFFooter />
+    </t-footer>
   </t-layout>
 </template>
 
-<style scoped lang="scss">
-.tContentBase {
-  padding: 1rem;
-  // background-color: antiquewhite;
-}
-</style>
+<style scoped lang="scss"></style>

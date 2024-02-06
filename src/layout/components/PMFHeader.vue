@@ -24,7 +24,12 @@ onMounted((): void => {
         style="width: 300px"
         :showArrow="true"
       >
-        <t-option v-for="(v,k) in pulsarInstance.instanceList" :key="k" :label="v.instance_name" :value="v.instance_id" />
+        <t-option
+          v-for="(v, k) in pulsarInstance.instanceList"
+          :key="k"
+          :label="v.instance_name"
+          :value="v.instance_id"
+        />
       </t-select>
       <t-space class="pmf-header__actions">
         <t-button variant="outline" theme="danger">

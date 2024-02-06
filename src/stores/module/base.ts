@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { store } from '@/stores'
-import { getInstanceList } from '@/api/sys'
+import { addInstance, getInstanceList } from '@/api/sys'
+import type { instanceDataType } from '@/views/settings/schema'
 
 interface BaseState {
   pulsarInstance: {
@@ -40,6 +41,9 @@ const useBaseStore = defineStore({
     async loadInstanceList(): Promise<any> {
       const result = await getInstanceList()
       this.pulsarInstance.instanceList = result.data
+    },
+    async createInstance(data: instanceDataType): Promise<any> {
+      await addInstance(data)
     }
   }
 })
