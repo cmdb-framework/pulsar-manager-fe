@@ -5,6 +5,7 @@
     <div class="title">欢迎使用 PulsarManger/Server</div>
     <div class="sub-title">请在左上角选择一个实例开始</div>
   </div>
+
 </template>
 
 <style scoped lang="scss">
