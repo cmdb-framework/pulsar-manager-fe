@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { LogoutIcon } from 'tdesign-icons-vue-next'
+import { LogoutIcon,SettingIcon } from 'tdesign-icons-vue-next'
 import { useBaseStoreWithOut } from '@/stores/module/base'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const baseStore = useBaseStoreWithOut()
 const pulsarInstance = baseStore.pulsarInstance
+const router = useRouter()
 
 onMounted((): void => {
   baseStore.loadInstanceList()
@@ -32,6 +34,18 @@ onMounted((): void => {
         />
       </t-select>
       <t-space class="pmf-header__actions">
+        <t-button
+          variant="outline"
+          theme="primary"
+          v-if="router.currentRoute.value.name !== 'Settings'"
+          @click="() => router.push({ name: 'Settings' })"
+        >
+          <template #icon>
+            <SettingIcon />
+          </template>
+          设置
+        </t-button>
+
         <t-button variant="outline" theme="danger">
           <template #icon>
             <LogoutIcon />
@@ -58,6 +72,7 @@ onMounted((): void => {
     display: flex;
     align-items: center;
     justify-content: center;
+
     h1 {
       font-size: 20px;
       font-weight: 600;

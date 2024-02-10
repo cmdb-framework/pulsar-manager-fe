@@ -18,10 +18,15 @@ import PMFAside from '@/layout/components/PMFAside.vue'
     </t-aside>
     <t-layout>
       <t-content class="base-main">
-        <RouterView />
+          <RouterView />
       </t-content>
     </t-layout>
   </t-layout>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+//.inner-layout {
+//  background-color: #ececec;
+//  border-radius: 10px;
+//}
+</style>

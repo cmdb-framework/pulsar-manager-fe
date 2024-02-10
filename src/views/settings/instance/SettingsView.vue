@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { useBaseStoreWithOut } from '@/stores/module/base'
-import type { instanceDataType } from '@/views/settings/schema'
-import InstanceEdit from '@/views/settings/InstanceEdit.vue'
+import type { instanceDataType } from '@/views/settings/instance/schema'
+import InstanceEdit from '@/views/settings/instance/InstanceEdit.vue'
 
 const baseStore = useBaseStoreWithOut()
 const pulsarInstance = baseStore.pulsarInstance
@@ -106,7 +106,7 @@ const editDialog = {
       >
         <template #action="{ row }">
           <t-space>
-            <t-button variant="text" theme="primary" @click="editDialog.onEdit(row)">
+            <t-button variant="text" theme="primary" @click.stop="editDialog.onEdit(row)">
               <template #icon>
                 <t-icon name="edit" />
               </template>
