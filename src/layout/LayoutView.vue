@@ -1,10 +1,5 @@
 <script lang="ts" setup>
 import PMFHeader from '@/layout/components/PMFHeader.vue'
-import PMFAside from '@/layout/components/PMFAside.vue'
-import NoSelectedView from '@/views/no_selected/NoSelectedView.vue'
-import { useBaseStoreWithOut } from '@/stores/module/base'
-
-const baseStore = useBaseStoreWithOut()
 </script>
 
 <template>

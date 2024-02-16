@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { useBaseStoreWithOut } from '@/stores/module/base'
-import type { instanceDataType } from '@/views/settings/instance/schema'
-import InstanceEdit from '@/views/settings/instance/InstanceEdit.vue'
+import type { instanceDataType } from '@/views/instance/schema'
+import InstanceEdit from '@/views/instance/InstanceEdit.vue'
 
 const baseStore = useBaseStoreWithOut()
 const pulsarInstance = baseStore.pulsarInstance
@@ -18,7 +18,7 @@ const tableState = reactive({
     { colKey: 'instance_status', title: '状态', align: 'center' },
     { colKey: 'tag', title: '标签', align: 'center' },
     { colKey: 'description', title: '描述', align: 'center', width: 200 },
-    { colKey: 'action', title: '操作', align: 'center', width: 200, fixed: 'right' }
+    { colKey: 'action', title: '操作', align: 'center', width: 200, fixed: 'right'}
   ],
   loading: false,
   selectedRowKeys: [],

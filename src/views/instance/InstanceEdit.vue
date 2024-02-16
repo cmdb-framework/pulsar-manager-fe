@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { instanceDataType } from '@/views/settings/instance/schema'
+import type { instanceDataType } from '@/views/instance/schema'
 const formData = defineModel<instanceDataType>({ required: true })
 </script>
 

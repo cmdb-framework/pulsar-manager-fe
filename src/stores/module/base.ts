@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { store } from '@/stores'
 import { addInstance, getInstanceList } from '@/api/sys'
-import type { instanceDataType } from '@/views/settings/instance/schema'
+import type { instanceDataType } from '@/views/instance/schema'
 
 interface BaseState {
   pulsarInstance: {
