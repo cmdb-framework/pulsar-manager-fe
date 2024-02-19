@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { LogoutIcon } from 'tdesign-icons-vue-next'
+import { SettingIcon, RollbackIcon } from 'tdesign-icons-vue-next'
 import { useBaseStoreWithOut } from '@/stores/module/base'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const baseStore = useBaseStoreWithOut()
+const router = useRouter()
 const pulsarInstance = baseStore.pulsarInstance
 
 onMounted((): void => {
-  baseStore.loadInstanceList()
+  baseStore.load()
 })
 </script>
 
@@ -32,11 +34,17 @@ onMounted((): void => {
         />
       </t-select>
       <t-space class="pmf-header__actions">
-        <t-button variant="outline" theme="danger">
+        <t-button variant="outline" theme="primary" @click="router.push({name: 'Settings'})" v-if="router.currentRoute.value.name !== 'Settings'">
           <template #icon>
-            <LogoutIcon />
+            <SettingIcon />
           </template>
-          退出
+          设置
+        </t-button>
+        <t-button variant="outline" theme="primary" @click="router.back()" v-else>
+          <template #icon>
+            <RollbackIcon />
+          </template>
+          返回
         </t-button>
       </t-space>
     </div>

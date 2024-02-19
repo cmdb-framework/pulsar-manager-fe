@@ -9,4 +9,12 @@ const addInstance = (data: instanceDataType) => {
   return Api.post('/system/instance/', data)
 }
 
-export { getInstanceList, addInstance }
+const modifyInstance = (data: instanceDataType, id?: number) => {
+  return Api.put(`/system/instance/${id}`, data)
+}
+
+const deleteInstance = ( id?: number) => {
+  return Api.delete(`/system/instance/${id}`)
+}
+
+export { getInstanceList, addInstance, modifyInstance,deleteInstance }

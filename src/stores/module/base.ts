@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { store } from '@/stores'
-import { addInstance, getInstanceList } from '@/api/sys'
+import { addInstance, deleteInstance, getInstanceList, modifyInstance } from '@/api/sys'
 import type { instanceDataType } from '@/views/settings/schema'
 
 interface BaseState {
@@ -38,12 +38,18 @@ const useBaseStore = defineStore({
     toggleCollapsed(): void {
       this.menuStatus.isCollapsed = !this.menuStatus.isCollapsed
     },
-    async loadInstanceList(): Promise<any> {
+    async load(): Promise<any> {
       const result = await getInstanceList()
       this.pulsarInstance.instanceList = result.data
     },
-    async createInstance(data: instanceDataType): Promise<any> {
+    async create(data: instanceDataType): Promise<any> {
       await addInstance(data)
+    },
+    async update(data: instanceDataType, id?: number): Promise<any> {
+      await modifyInstance(data, id)
+    },
+    async delete(id?: number): Promise<any> {
+      await deleteInstance(id)
     }
   }
 })

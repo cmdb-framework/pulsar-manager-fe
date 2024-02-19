@@ -1,4 +1,6 @@
 interface instanceDataType {
+  id?: number
+  instance_id: string
   instance_name: string
   instance_url: string
   instance_port: number

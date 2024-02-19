@@ -34,6 +34,7 @@ const reHandleSelectChange = (value: any, ctx: instanceDataType) => {
 const editDialog = {
   visible: ref<boolean>(false),
   instanceData: reactive<instanceDataType>({
+    instance_id: '',
     instance_name: '',
     instance_url: '',
     instance_port: 6650,
@@ -43,14 +44,23 @@ const editDialog = {
     tag: '',
     description: ''
   }),
-  onEdit(rowIndex?: number) {
-    if (rowIndex !== undefined) {
-      this.instanceData = Object.assign({}, this.instanceList[rowIndex])
+  onEdit(row?: instanceDataType) {
+    if (row !== undefined) {
+      const indexId = pulsarInstance.instanceList.findIndex((ele:instanceDataType) => ele.instance_id === row.instance_id)
+      this.instanceData = pulsarInstance.instanceList[indexId]
     }
     this.visible.value = true
   },
   onConfirmAnother() {
-    baseStore.createInstance(this.instanceData)
+    if (this.instanceData.instance_id) {
+      baseStore.update(this.instanceData, this.instanceData.id)
+    } else{
+      baseStore.create(this.instanceData)
+    }
+    this.visible.value = false
+  },
+  onDelete(row: instanceDataType) {
+    baseStore.delete(row.id)
     this.visible.value = false
   },
   onCancel() {
@@ -88,7 +98,7 @@ const editDialog = {
         <t-button theme="success">
           <template #icon>
             <t-icon name="refresh" />
-            连通性测试
+            消息可达性测试
           </template>
         </t-button>
       </t-space>
@@ -106,13 +116,13 @@ const editDialog = {
       >
         <template #action="{ row }">
           <t-space>
-            <t-button variant="text" theme="primary" @click="editDialog.onEdit(row)">
+            <t-button variant="text" theme="primary" @click.stop="editDialog.onEdit(row)">
               <template #icon>
                 <t-icon name="edit" />
               </template>
               编辑
             </t-button>
-            <t-button variant="text" theme="danger">
+            <t-button variant="text" theme="danger" @click.stop="editDialog.onDelete(row)">
               <template #icon>
                 <t-icon name="delete" />
               </template>
