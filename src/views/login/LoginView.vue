@@ -10,14 +10,14 @@ import {
 import { UserCircleIcon, UserPasswordIcon } from 'tdesign-icons-vue-next'
 import type { FormSubmitEvent } from 'tdesign-vue-next/es/common'
 import { useI18n } from 'vue-i18n'
+import { userLogin } from '@/api/user'
 
 const { t } = useI18n()
 const rules: FormRules = {
   username: [
-    { required: true, message: '请输入用户名', trigger: 'blur', type: 'error' },
-    { required: true, message: '请输入用户名', type: 'error', trigger: 'change' }
+    { required: true, message: `${t("login.authRule.username")}`, trigger: 'blur', type: 'error' },
   ],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur', type: 'error' }]
+  password: [{ required: true, message: `${t("login.authRule.password")}`, trigger: 'blur', type: 'error' }]
 }
 const formData = reactive<LoginSchema>({
   username: '',
@@ -26,18 +26,18 @@ const formData = reactive<LoginSchema>({
 const form = ref<Element | null>(null)
 const checking = ref<boolean>(false)
 
-function loginAction(context: SubmitContext<LoginSchema>): void {
+async function loginAction(context: SubmitContext<LoginSchema>): Promise<void> {
   let validateResult: FormValidateResult<LoginSchema> = context.validateResult
   let firstError: string | undefined = context.firstError
   let e: FormSubmitEvent | undefined = context.e
   checking.value = true
   e?.preventDefault()
   if (validateResult === true) {
-    MessagePlugin.success('提交成功')
-    checking.value = false
+    let result = await userLogin(formData)
+    console.log(result)
   } else {
     console.log('Validate Errors: ', firstError, validateResult)
-    MessagePlugin.warning(firstError ? firstError : '')
+    await MessagePlugin.warning(firstError ? firstError : '')
     checking.value = false
   }
 }
@@ -66,7 +66,7 @@ function loginAction(context: SubmitContext<LoginSchema>): void {
             style="width: 100%"
           >
             <t-form-item name="username">
-              <t-input v-model="formData.username" :clearable="true" :disabled="checking">
+              <t-input v-model="formData.username" :clearable="true" :disabled="checking" :placeholder="`${t('login.placeholder.username')}`">
                 <template #prefix-icon>
                   <UserCircleIcon />
                 </template>
@@ -78,6 +78,7 @@ function loginAction(context: SubmitContext<LoginSchema>): void {
                 v-model="formData.password"
                 :clearable="true"
                 :disabled="checking"
+                :placeholder="`${t('login.placeholder.password')}`"
               >
                 <template #prefix-icon>
                   <UserPasswordIcon />
@@ -85,7 +86,7 @@ function loginAction(context: SubmitContext<LoginSchema>): void {
               </t-input>
             </t-form-item>
             <t-form-item>
-              <t-button type="submit" :block="true" :loading="checking"> 登录 </t-button>
+              <t-button type="submit" :block="true" :loading="checking"> {{t("login.loginBtn")}} </t-button>
             </t-form-item>
           </t-form>
         </div>
