@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogoutIcon, SettingIcon,RollbackIcon } from 'tdesign-icons-vue-next'
+import { LogoutIcon, SettingIcon, RollbackIcon } from 'tdesign-icons-vue-next'
 import { useBaseStoreWithOut } from '@/stores/module/base'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -45,12 +45,7 @@ onMounted((): void => {
           </template>
           设置
         </t-button>
-        <t-button
-          variant="outline"
-          theme="primary"
-          v-else
-          @click="() => router.back()"
-        >
+        <t-button variant="outline" theme="primary" v-else @click="() => router.back()">
           <template #icon>
             <RollbackIcon />
           </template>

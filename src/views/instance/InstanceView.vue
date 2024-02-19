@@ -18,7 +18,7 @@ const tableState = reactive({
     { colKey: 'instance_status', title: '状态', align: 'center' },
     { colKey: 'tag', title: '标签', align: 'center' },
     { colKey: 'description', title: '描述', align: 'center', width: 200 },
-    { colKey: 'action', title: '操作', align: 'center', width: 200, fixed: 'right'}
+    { colKey: 'action', title: '操作', align: 'center', width: 200, fixed: 'right' }
   ],
   loading: false,
   selectedRowKeys: [],

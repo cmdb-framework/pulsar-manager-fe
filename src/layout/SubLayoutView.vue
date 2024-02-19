@@ -20,7 +20,6 @@ import PMFAside from '@/layout/components/PMFAside.vue'
       </t-content>
     </t-layout>
   </t-layout>
-
 </template>
 
 <style scoped lang="scss">

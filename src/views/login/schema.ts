@@ -1,6 +1,6 @@
 interface LoginSchema {
-  username: string;
-  password: string;
+  username: string
+  password: string
 }
 
-export type { LoginSchema };
+export type { LoginSchema }
