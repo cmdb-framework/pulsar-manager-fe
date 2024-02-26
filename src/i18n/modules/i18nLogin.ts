@@ -1,6 +1,8 @@
 const i18nLogin = {
   zh: {
     login: {
+      success: '登录成功',
+      error: '登录失败',
       title: '登录',
       desc: 'Pulsar 集群管理平台',
       authRule: {
@@ -16,6 +18,8 @@ const i18nLogin = {
   },
   en: {
     login: {
+      success: 'Login Success',
+      error: 'Login Error',
       title: 'Log In',
       desc: 'Pulsar Cluster Management Platform',
       authRule: {

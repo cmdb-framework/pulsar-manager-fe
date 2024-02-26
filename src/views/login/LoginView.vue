@@ -11,7 +11,10 @@ import { UserCircleIcon, UserPasswordIcon } from 'tdesign-icons-vue-next'
 import type { FormSubmitEvent } from 'tdesign-vue-next/es/common'
 import { useI18n } from 'vue-i18n'
 import { userLogin } from '@/api/user'
+import { useRouter } from 'vue-router'
+import Token from '@/utils/other/token'
 
+const router = useRouter()
 const { t } = useI18n()
 const rules: FormRules = {
   username: [
@@ -34,9 +37,15 @@ async function loginAction(context: SubmitContext<LoginSchema>): Promise<void> {
   e?.preventDefault()
   if (validateResult === true) {
     let result = await userLogin(formData)
-    console.log(result)
+    if (result) {
+      Token.setToken(result)
+      await MessagePlugin.success(`${t("login.success")}`)
+      await router.push('/dashboard')
+    } else {
+      await MessagePlugin.error(`${t("login.error")}`)
+    }
   } else {
-    console.log('Validate Errors: ', firstError, validateResult)
+    console.log('Validate Errors:', firstError, validateResult)
     await MessagePlugin.warning(firstError ? firstError : '')
     checking.value = false
   }
