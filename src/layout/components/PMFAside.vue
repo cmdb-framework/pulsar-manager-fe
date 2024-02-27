@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import instance_routes from '@/router/routes/instance_routes'
 import { useBaseStoreWithOut } from '@/stores/module/base'
+import { useRouter } from 'vue-router'
 import PMFMenu from '@/layout/components/PMFMenu'
+import routes_enum from '@/router/routes/routes_enum'
 const baseStore = useBaseStoreWithOut()
+
+const router = useRouter()
+console.log(router.currentRoute.value.fullPath)
 </script>
 
 <template>
@@ -13,7 +17,7 @@ const baseStore = useBaseStoreWithOut()
     height="550px"
     :collapsed="baseStore.getMenuStatus.isCollapsed"
   >
-    <PMFMenu :routes="instance_routes" />
+    <PMFMenu :routes="routes_enum(router.currentRoute.value.name)" />
     <template #operations>
       <t-button variant="text" shape="square" @click="baseStore.toggleCollapsed">
         <template #icon><t-icon name="view-list" /></template>

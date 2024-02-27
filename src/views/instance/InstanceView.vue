@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { useBaseStoreWithOut } from '@/stores/module/base'
-import type { instanceDataType } from '@/views/settings/schema'
-import InstanceEdit from '@/views/settings/InstanceEdit.vue'
+import type { instanceDataType } from '@/views/instance/schema'
+import InstanceEdit from '@/views/instance/InstanceEdit.vue'
 
 const baseStore = useBaseStoreWithOut()
 const pulsarInstance = baseStore.pulsarInstance
