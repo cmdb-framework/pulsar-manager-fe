@@ -18,9 +18,11 @@ const router = useRouter()
 const { t } = useI18n()
 const rules: FormRules = {
   username: [
-    { required: true, message: `${t("login.authRule.username")}`, trigger: 'blur', type: 'error' },
+    { required: true, message: `${t('login.authRule.username')}`, trigger: 'blur', type: 'error' }
   ],
-  password: [{ required: true, message: `${t("login.authRule.password")}`, trigger: 'blur', type: 'error' }]
+  password: [
+    { required: true, message: `${t('login.authRule.password')}`, trigger: 'blur', type: 'error' }
+  ]
 }
 const formData = reactive<LoginSchema>({
   username: '',
@@ -39,10 +41,10 @@ async function loginAction(context: SubmitContext<LoginSchema>): Promise<void> {
     let result = await userLogin(formData)
     if (result) {
       Token.setToken(result)
-      await MessagePlugin.success(`${t("login.success")}`)
+      await MessagePlugin.success(`${t('login.success')}`)
       await router.push('/dashboard')
     } else {
-      await MessagePlugin.error(`${t("login.error")}`)
+      await MessagePlugin.error(`${t('login.error')}`)
     }
   } else {
     console.log('Validate Errors:', firstError, validateResult)
@@ -75,7 +77,12 @@ async function loginAction(context: SubmitContext<LoginSchema>): Promise<void> {
             style="width: 100%"
           >
             <t-form-item name="username">
-              <t-input v-model="formData.username" :clearable="true" :disabled="checking" :placeholder="`${t('login.placeholder.username')}`">
+              <t-input
+                v-model="formData.username"
+                :clearable="true"
+                :disabled="checking"
+                :placeholder="`${t('login.placeholder.username')}`"
+              >
                 <template #prefix-icon>
                   <UserCircleIcon />
                 </template>
@@ -95,7 +102,9 @@ async function loginAction(context: SubmitContext<LoginSchema>): Promise<void> {
               </t-input>
             </t-form-item>
             <t-form-item>
-              <t-button type="submit" :block="true" :loading="checking"> {{t("login.loginBtn")}} </t-button>
+              <t-button type="submit" :block="true" :loading="checking">
+                {{ t('login.loginBtn') }}
+              </t-button>
             </t-form-item>
           </t-form>
         </div>

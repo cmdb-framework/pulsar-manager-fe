@@ -9,7 +9,7 @@ const i18nLogin = {
         username: '用户名不能为空',
         password: '密码不能为空'
       },
-      placeholder:{
+      placeholder: {
         username: '请输入用户名',
         password: '请输入密码'
       },
@@ -26,7 +26,7 @@ const i18nLogin = {
         username: 'username can not empty',
         password: 'password can not empty'
       },
-      placeholder:{
+      placeholder: {
         username: 'please input username',
         password: 'please input password'
       },

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import NoSelectedView from '@/views/no_selected/NoSelectedView.vue'
 import { useBaseStoreWithOut } from '@/stores/module/base'
-
 const baseStore = useBaseStoreWithOut()
 import PMFAside from '@/layout/components/PMFAside.vue'
 </script>

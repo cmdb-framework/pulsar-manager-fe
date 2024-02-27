@@ -9,6 +9,15 @@ const setting_routes: RouteRecordRaw[] = [
       title: '实例',
       icon: 'instance'
     }
+  },
+  {
+    path: 'user',
+    name: 'User',
+    component: () => import('@/views/instance/InstanceView.vue'),
+    meta: {
+      title: '用户',
+      icon: 'user'
+    }
   }
 ]
 

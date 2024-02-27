@@ -1,4 +1,4 @@
-export default class Token{
+export default class Token {
   static setToken(token: string): void {
     localStorage.setItem('PMToken', token)
   }

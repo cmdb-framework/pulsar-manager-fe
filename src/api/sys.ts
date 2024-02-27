@@ -13,8 +13,8 @@ const modifyInstance = (data: instanceDataType, id?: number) => {
   return Api.put(`/system/instance/${id}`, data)
 }
 
-const deleteInstance = ( id?: number) => {
+const deleteInstance = (id?: number) => {
   return Api.delete(`/system/instance/${id}`)
 }
 
-export { getInstanceList, addInstance, modifyInstance,deleteInstance }
+export { getInstanceList, addInstance, modifyInstance, deleteInstance }

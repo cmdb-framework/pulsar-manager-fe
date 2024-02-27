@@ -5,4 +5,4 @@ const userLogin = (data: LoginSchema) => {
   return Api.post('/user/login', data)
 }
 
-export {userLogin}
+export { userLogin }

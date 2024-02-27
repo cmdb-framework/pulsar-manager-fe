@@ -46,7 +46,9 @@ const editDialog = {
   }),
   onEdit(row?: instanceDataType) {
     if (row !== undefined) {
-      const indexId = pulsarInstance.instanceList.findIndex((ele:instanceDataType) => ele.instance_id === row.instance_id)
+      const indexId = pulsarInstance.instanceList.findIndex(
+        (ele: instanceDataType) => ele.instance_id === row.instance_id
+      )
       this.instanceData = pulsarInstance.instanceList[indexId]
     }
     this.visible.value = true
@@ -54,7 +56,7 @@ const editDialog = {
   onConfirmAnother() {
     if (this.instanceData.instance_id) {
       baseStore.update(this.instanceData, this.instanceData.id)
-    } else{
+    } else {
       baseStore.create(this.instanceData)
     }
     this.visible.value = false

@@ -7,13 +7,20 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Instance',
     component: () => import('@/layout/LayoutView.vue'),
-    redirect: '/instance',
     children: [
       {
         path: 'views',
         name: 'Views',
         component: () => import('@/layout/SubLayoutView.vue'),
+        redirect: '/views/dashboard',
         children: instance_routes
+      },
+      {
+        path: 'settings',
+        name: 'Settings',
+        component: () => import('@/layout/SubLayoutView.vue'),
+        redirect: '/settings/instance',
+        children: setting_routes
       }
     ]
   },

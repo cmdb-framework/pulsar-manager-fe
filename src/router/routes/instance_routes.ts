@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 const instance_routes: RouteRecordRaw[] = [
   {
-    path: '/dashboard',
+    path: 'dashboard',
     name: 'Dashboard',
     component: () => import('@/views/dashboard/DashboardView.vue'),
     meta: {
@@ -11,7 +11,7 @@ const instance_routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/namespace',
+    path: 'namespace',
     name: 'Namespace',
     component: () => import('@/views/namespace/NameSpaceView.vue'),
     meta: {
@@ -20,7 +20,7 @@ const instance_routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/tenant',
+    path: 'tenant',
     name: 'Tenant',
     component: () => import('@/views/tenant/TenantView.vue'),
     meta: {
@@ -29,7 +29,7 @@ const instance_routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/topic',
+    path: 'topic',
     name: 'Topic',
     component: () => import('@/views/topic/TopicView.vue'),
     meta: {
@@ -38,7 +38,7 @@ const instance_routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/consumer',
+    path: 'consumer',
     name: 'Consumer',
     component: () => import('@/views/consumer/ConsumerView.vue'),
     meta: {
