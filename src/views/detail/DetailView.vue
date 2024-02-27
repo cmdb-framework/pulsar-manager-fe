@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import TenantNamespace from '@/views/detail/components/TenantNamespace.vue'
 import { useRouter } from 'vue-router'
+import { syncTN } from '@/api/sync'
 
 const router = useRouter()
 const syncTree = (id: string | string[]) => {
-  console.log(id)
+  if (Array.isArray(id)) {
+    id = id.join(",")
+  }
+  syncTN(id)
 }
 </script>
 
