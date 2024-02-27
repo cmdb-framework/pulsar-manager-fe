@@ -2,19 +2,19 @@ import Api from '@/api/baseRequest'
 import type { instanceDataType } from '@/views/instance/schema'
 
 const getInstanceList = () => {
-  return Api.get('/system/instance/')
+  return Api.get('/instance/')
 }
 
 const addInstance = (data: instanceDataType) => {
-  return Api.post('/system/instance/', data)
+  return Api.post('/instance/', data)
 }
 
 const modifyInstance = (data: instanceDataType, id?: number) => {
-  return Api.put(`/system/instance/${id}`, data)
+  return Api.put(`/instance/${id}`, data)
 }
 
 const deleteInstance = (id?: number) => {
-  return Api.delete(`/system/instance/${id}`)
+  return Api.delete(`/instance/${id}`)
 }
 
 export { getInstanceList, addInstance, modifyInstance, deleteInstance }

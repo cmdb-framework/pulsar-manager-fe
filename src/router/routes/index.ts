@@ -5,14 +5,15 @@ import setting_routes from '@/router/routes/setting_routes'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'Instance',
+    name: 'Layout',
     component: () => import('@/layout/LayoutView.vue'),
+    redirect: '/views/dashboard',
     children: [
       {
-        path: 'views',
+        path: '/instance/:id',
         name: 'Views',
         component: () => import('@/layout/SubLayoutView.vue'),
-        redirect: '/views/dashboard',
+        redirect: '/instance/:id/dashboard',
         children: instance_routes
       },
       {

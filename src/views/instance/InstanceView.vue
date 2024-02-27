@@ -79,17 +79,8 @@ const editDialog = {
 </script>
 
 <template>
-  <div
-    class="full flex-base base-main"
-    style="flex-direction: column; padding: var(--td-comp-paddingTB-xl) var(--td-comp-paddingLR-xl)"
-  >
-    <div
-      class="full base-main"
-      style="
-        background-color: #fff;
-        padding: var(--td-comp-paddingTB-xl) var(--td-comp-paddingLR-xl);
-      "
-    >
+  <div class="full flex-base base-main" style="flex-direction: column">
+    <div class="full base-main" style="background-color: #fff">
       <t-space style="height: 32px; margin-bottom: 1rem">
         <t-button style="margin-right: 0.5rem" @click="editDialog.onEdit()">
           <template #icon>

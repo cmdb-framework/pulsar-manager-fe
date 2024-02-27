@@ -37,19 +37,24 @@ onMounted((): void => {
         <t-button
           variant="outline"
           theme="primary"
-          v-if="router.currentRoute.value.name !== 'Settings'"
+          v-if="router.currentRoute.value.fullPath.startsWith('/settings')"
+          @click="() => router.back()"
+        >
+          <template #icon>
+            <RollbackIcon />
+          </template>
+          返回
+        </t-button>
+        <t-button
+          variant="outline"
+          theme="primary"
+          v-else
           @click="() => router.push({ path: '/settings' })"
         >
           <template #icon>
             <SettingIcon />
           </template>
           设置
-        </t-button>
-        <t-button variant="outline" theme="primary" v-else @click="() => router.back()">
-          <template #icon>
-            <RollbackIcon />
-          </template>
-          返回
         </t-button>
 
         <t-button variant="outline" theme="danger">
