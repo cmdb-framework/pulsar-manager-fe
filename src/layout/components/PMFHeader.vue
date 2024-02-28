@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogoutIcon, SettingIcon, RollbackIcon } from 'tdesign-icons-vue-next'
+import { LogoutIcon, RollbackIcon, SettingIcon } from 'tdesign-icons-vue-next'
 import { useBaseStoreWithOut } from '@/stores/module/base'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -10,6 +10,7 @@ const router = useRouter()
 
 onMounted((): void => {
   baseStore.loadInstanceList()
+  pulsarInstance.instanceId = router.currentRoute.value.params.id as string
 })
 </script>
 
@@ -25,6 +26,7 @@ onMounted((): void => {
         :clearable="true"
         style="width: 300px"
         :showArrow="true"
+        @change="router.push({name: 'Dashboard',params: {id: pulsarInstance.instanceId}})"
       >
         <t-option
           v-for="(v, k) in pulsarInstance.instanceList"

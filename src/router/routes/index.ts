@@ -7,8 +7,16 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Layout',
     component: () => import('@/layout/LayoutView.vue'),
-    redirect: '/views/dashboard',
+    redirect: '/welcome',
     children: [
+      {
+        path:'/welcome',
+        name: 'Welcome',
+        component: () => import('@/views/no_selected/NoSelectedView.vue'),
+        meta: {
+          title: 'Welcome'
+        }
+      },
       {
         path: '/instance/:id',
         name: 'Views',

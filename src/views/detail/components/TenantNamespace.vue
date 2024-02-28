@@ -1,24 +1,11 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { useBaseStoreWithOut } from '@/stores/module/base'
+const pulsarInstance = useBaseStoreWithOut().pulsarInstance
 
-const props = defineProps({
-  instanceId: {
-    type: String,
-    required: true
-  }
-})
-
-watch(
-  () => props.instanceId,
-  (n, o) => {
-    console.log(n, o)
-  },
-  { immediate: true }
-)
 </script>
 
 <template>
-  {{ props.instanceId }}
+  {{ pulsarInstance.instanceId }}
 </template>
 
 <style scoped lang="scss"></style>
